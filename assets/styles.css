@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.center {
+    text-align: center;
+}
+.screen{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+#intro-screen{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/config/introScreen/intro-background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+#intro-exit-btn{
+    position: absolute;
+    top: 90%;
+}
+#start-screen{
+    background-image: url('/assets/img/start-background/start-background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#start-screen .title{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+}
+@import url("https://fonts.googleapis.com/css?family=Modak");
+#start-screen .title-content{
+    color: #fcedd8;
+	font-family: 'Niconne', cursive;
+	font-weight: 700;
+    text-shadow: 5px 5px 0px #eb452b, 
+                 10px 10px 0px #efa032, 
+                 15px 15px 0px #46b59b, 
+                 20px 20px 0px #017e7f, 
+                 25px 25px 0px #052939;
+
+    width: 100%;
+    font-size: 16vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-screen .menu-buttons{
+    height: 100%;
+    position: relative;
+    text-align: center;
+    top: 50%;
+    display: block;
+}
+#start-screen .space-row-item{
+    margin: 0 0 3% 0;
+}
+
+#game-screen{
+    background-image: url();
+    display: none;
+}
+
+#game-screen .title {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#game-screen .title-content {
+	color: #f70808;
+	font-size: 14vh;  
+	font-weight: 900;
+    font-family: cursive;
+	text-shadow: 
+		-0.0075em 0.0075em 0 #151600,
+		0.005em 0.005em 0 #1a1901,
+		0.01em 0.01em 0 #1c1d01,
+        0.015em 0.015em 0 #313301;
+}
+#game-screen .title-content:hover{
+    text-shadow: 4px 4px 16px #094b97;
+}
+#game-screen .menu-card{
+    position: relative;
+    height: 100%;
+}
+#game-screen .card{
+    background-color: transparent;
+    border: none;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    flex-wrap: wrap;
+    height: 30%;
+    margin: 5% 0 3% 0;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#game-screen .card img{
+    width: 110px;
+    height: 240px;
+}
+#game-screen .card-inner {
+    position: relative;
+    width: 110px;
+    height: 240px;
+    text-align: center;
+    transition: transform 0.8s, width 0.8s, height 0.8s;
+    transform-style: preserve-3d;
+    
+}
+  
+/* Do an horizontal flip when you move the mouse over the flip box container */
+#game-screen .card:hover .card-inner{
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 8px #eec5c5;
+}
+#game-screen .card:hover img{
+    width: 120px;
+    height: 250px;
+}
+/* Position the front and back side */
+#game-screen .card-front, #game-screen .card-back {
+    position: absolute;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Style the front side (fallback if image is missing) */
+#game-screen .card-front {
+    color: black;
+    width: 110px;
+    height: 240px;
+}
+
+/* Style the back side */
+#game-screen .card-back {
+    width: 110px;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: #eb452b;
+    transform: rotateY(180deg);
+}
+@media only screen and (max-width: 600px){
+    #start-screen .title-content{
+        font-size: 12vh;
+    }
+    #game-screen .title-content{
+        font-size: 8vh;
+    }
+    #game-screen .card:hover .card-inner{
+        box-shadow: 0 0 0 0 white;
+    }
+    #game-screen .card{
+        margin: 10% 0 5% 0;
+    }
+}
