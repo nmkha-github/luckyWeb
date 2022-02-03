@@ -71,7 +71,11 @@
 }
 
 #game-screen{
-    background-image: url();
+    background-image: url('/config/mainScreen/mainScreen-background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
     display: none;
 }
 
@@ -106,7 +110,7 @@
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
     flex-wrap: wrap;
     height: 30%;
-    margin: 5% 0 0 0;
+    margin: 3% 0 0 0;
     display: flex;
 	align-items: center;
 	justify-content: center;
@@ -162,6 +166,43 @@
     background-color: #eb452b;
     transform: rotateY(180deg);
 }
+#score-board {
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#score-board .box{
+    width: 500px;
+    height: 500px;
+    background-color: rgb(40, 223, 247);
+    border-style: double;
+    border-color: #efa032;
+    border-width: 1px;
+}
+#score-board .title{
+    font-family: cursive;
+    font-size: 4vh;
+    margin: 10px 0 0 0;
+    font-weight: 700;
+}
+#score-board .content{
+    height: 300px;
+    font-size: 4vh;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#score-board .content::first-line{
+    padding-left: 20px;
+}
+#score-board .btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
 @media only screen and (max-width: 600px){
     #start-screen .title-content{
         font-size: 12vh;
@@ -174,5 +215,16 @@
     }
     #game-screen .card{
         margin: 10% 0 5% 0;
+    }
+    #score-board .box{
+        width: 300px;
+        height: 300px;
+    }
+    #score-board .title{
+        font-size: calc(2vh + 5px);
+    }
+    #score-board .content{
+        font-size: calc(2vh + 5px);
+        height: 150px;
     }
 }

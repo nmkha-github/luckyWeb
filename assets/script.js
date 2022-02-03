@@ -44,6 +44,7 @@ function backToStart(){
     element.style.display = "block";
 }
 
+document.querySelector("#game-screen .title-content").innerHTML = readTextFile('config/mainScreen/title.txt');
 cards = [{isFlipped: false, point: 0}, 
          {isFlipped: false, point: 0},
          {isFlipped: false, point: 0},
@@ -52,9 +53,38 @@ cards = [{isFlipped: false, point: 0},
          {isFlipped: false, point: 0}];
 
 cnt = 0;
+userPoints = 0;
 function flip(n){
-    if (cnt >= 3 || cards[n]['isFlipped']) return true;
+    if (cards[n]['isFlipped'] || cnt >= 3) return true;
     cnt++;
     cards[n]['isFlipped'] = true;
+    point = Math.floor(Math.random() * 100) + 1; 
+    userPoints += point;
+    document.querySelectorAll("#game-screen .card-back h2")[n].innerHTML = point.toString();
     document.querySelectorAll("#game-screen .card-inner")[n].style.transform = 'rotateY(180deg)';
+    if (cnt == 3){
+        scoreBoard();
+        return true;
+    }
+}
+
+a = readTextFile("config/mainScreen/scoreBoard/title.txt");
+document.querySelectorAll("#score-board .title")[0].innerHTML = a;
+function scoreBoard(){
+    document.getElementById("score-board").style.display = "flex";
+    document.querySelector("#score-board .content .before").innerHTML = readTextFile("config/mainScreen/scoreBoard/beforePoint.txt");
+    document.querySelector("#score-board .content .after").innerHTML = readTextFile("config/mainScreen/scoreBoard/afterPoint.txt");
+    document.querySelector("#score-board .content .points").innerHTML = userPoints.toString();
+}
+function playAgain(){
+    document.getElementById("score-board").style.display = "none";
+    cnt = 0;
+    userPoints = 0;
+    for (var i = 0; i < 6; i++) {
+        if (cards[i]['isFlipped']){
+            cards[i]['isFlipped'] = false;
+            document.querySelectorAll("#game-screen .card-inner")[i].style.transform = 'none';
+        }
+    }
+
 }
