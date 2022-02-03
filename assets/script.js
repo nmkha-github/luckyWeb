@@ -53,7 +53,7 @@ cards = [{isFlipped: false, point: 0},
 
 cnt = 0;
 function flip(n){
-    if (cnt >= 3) return true;
+    if (cnt >= 3 || cards[n]['isFlipped']) return true;
     cnt++;
     cards[n]['isFlipped'] = true;
     document.querySelectorAll("#game-screen .card-inner")[n].style.transform = 'rotateY(180deg)';
